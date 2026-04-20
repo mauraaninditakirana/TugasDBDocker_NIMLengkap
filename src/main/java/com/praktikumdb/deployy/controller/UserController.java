@@ -2,10 +2,9 @@ package com.praktikumdb.deployy.controller;
 
 import com.praktikumdb.deployy.model.User;
 import com.praktikumdb.deployy.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -19,5 +18,9 @@ public class UserController {
     public String createUser(@RequestBody User request) {
         userService.addUser(request);
         return "User created successfull";
+    }
+    @GetMapping
+    public List<User> getAllUsers(){
+        return userService.getAllUsers();
     }
 }

@@ -17,10 +17,16 @@ public class UserController {
     @PostMapping
     public String createUser(@RequestBody User request) {
         userService.addUser(request);
-        return "User created successfull";
+        return "User created successfully";
     }
     @GetMapping
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable String id) {
+        userService.deleteUser(id);
+        return "User deleted successfully";
+    }
+
 }
